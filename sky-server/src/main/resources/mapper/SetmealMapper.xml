@@ -9,6 +9,26 @@
         values (#{categoryId}, #{name}, #{price}, #{status}, #{description}, #{image}, #{createTime}, #{updateTime},
                 #{createUser}, #{updateUser})
     </insert>
+    <update id="update">
+        update setmeal
+        <set>
+            <if test="categoryId != null">
+                category_id = #{categoryId},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="description != null">
+                description = #{description},
+           </if>
+        </set>
+    </update>
     <select id="pageQuery" resultType="com.sky.vo.SetmealVO">
         select s.*, c.name as categoryName
         from setmeal s
